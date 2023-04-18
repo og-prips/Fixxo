@@ -1,0 +1,38 @@
+﻿<section class="breadcrumb">
+    <div class="container">
+        <ul>
+
+            <li>
+                <a class="menu-link" asp-controller="Home" asp-action="Index">HOME</a>
+            </li>
+            <li class="active">Contacts</li>
+        </ul>
+    </div>
+</section>
+
+<section class="google-maps">
+    <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Tomtebodav%C3%A4gen%203a+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+
+<section class="contact-form">
+    <div class="container">
+        <h1>Come in Contact with Us</h1>
+        <form method="post">
+            <div class="contact-form-name">
+                <input id="name" name="name" type="text" placeholder="Your Name">
+                <div class="error">You must provide a valid name</div>
+            </div>
+            <div class="contact-form-email">
+                <input id="email" name="email" type="email" placeholder="Your Mail">
+                <div class="error">You must provide an valid e-mail address</div>
+            </div>
+            <div class="contact-form-comments">
+                <textarea id="comments" name="comments" placeholder="Comments"></textarea>
+                <div class="error">You must provide a comment</div>
+            </div>
+
+            <button class="btn-theme" type="submit">Post Comments</button>
+        </form>
+    </div>
+</section>
