@@ -1,8 +1,15 @@
-﻿@{
+﻿@model IEnumerable<ProductModel>
+
+
+@{
 	ViewData["CollectionTitle"] = "Featured Products";
+	var featuredProducts = Model.Where(p => p.Tag == "Featured").OrderByDescending(p => p.DateAdded).ToList();
+	var newProducts = Model.Where(p => p.Tag == "New").ToList();
+	var popularProducts = Model.Where(p => p.Tag == "Popular").ToList();
 }
 
 <partial name="~/Views/Shared/Partials/_Showcase.cshtml" />
-<partial name="~/Views/Shared/Partials/_Collection.cshtml" />
+<partial name="~/Views/Shared/Partials/_FeaturedCollection.cshtml" model="featuredProducts" />
 <partial name="~/Views/Shared/Partials/_SpecialOffers.cshtml" />
-<partial name="~/Views/Shared/Partials/_TwoColumnCollection.cshtml" />
+<partial name="~/Views/Shared/Partials/_NewCollection.cshtml" model="newProducts" />
+<partial name="~/Views/Shared/Partials/_PopularCollection.cshtml" model="popularProducts" />

@@ -1,4 +1,6 @@
-﻿<section class="breadcrumb">
+﻿@model ContactViewModel
+
+<section class="breadcrumb">
     <div class="container">
         <ul>
 
@@ -18,21 +20,30 @@
 <section class="contact-form">
     <div class="container">
         <h1>Come in Contact with Us</h1>
-        <form method="post">
+
+        <form method="post" novalidate>
             <div class="contact-form-name">
-                <input id="name" name="name" type="text" placeholder="Your Name">
-                <div class="error">You must provide a valid name</div>
+                <input asp-for="CustomerName" placeholder="Your Name" />
+                <span asp-validation-for="CustomerName" class="error"></span>
             </div>
+
             <div class="contact-form-email">
-                <input id="email" name="email" type="email" placeholder="Your Mail">
-                <div class="error">You must provide an valid e-mail address</div>
+                <input asp-for="Email" placeholder="Your Mail">
+                <span asp-validation-for="Email" class="error"></span>
             </div>
+
             <div class="contact-form-comments">
-                <textarea id="comments" name="comments" placeholder="Comments"></textarea>
-                <div class="error">You must provide a comment</div>
+                <textarea asp-for="Comment" placeholder="Comments"></textarea>
+                <span asp-validation-for="Comment" class="error"></span>
             </div>
 
             <button class="btn-theme" type="submit">Post Comments</button>
+            @if (ViewBag.IsSent != null && ViewBag.IsSent)
+            {
+                <div class="alert alert-success text-center">
+                    <p>Your comment has been sent successfully.</p>
+                </div>
+            }
         </form>
     </div>
 </section>

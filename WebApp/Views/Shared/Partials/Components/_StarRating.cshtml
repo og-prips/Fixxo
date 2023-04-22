@@ -1,7 +1,17 @@
-﻿<div class="star-rating">
-	<i class="fa-sharp fa-star fa-solid"></i>
-	<i class="fa-sharp fa-star fa-solid"></i>
-	<i class="fa-sharp fa-star fa-solid"></i>
-	<i class="fa-sharp fa-star fa-regular"></i>
-	<i class="fa-sharp fa-star fa-regular"></i>
+﻿@model int
+
+@{
+    int fullStars = Model;
+    int emptyStars = 5 - fullStars;
+}
+
+<div class="star-rating">
+    @for (int i = 0; i < fullStars; i++)
+    {
+        <i class="fa-sharp fa-star fa-solid"></i>
+    }
+    @for (int i = 0; i < emptyStars; i++)
+    {
+        <i class="fa-sharp fa-star fa-regular"></i>
+    }
 </div>
