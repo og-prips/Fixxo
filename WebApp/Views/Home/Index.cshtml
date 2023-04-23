@@ -1,15 +1,27 @@
 ﻿@model IEnumerable<ProductModel>
 
-
 @{
-	ViewData["CollectionTitle"] = "Featured Products";
-	var featuredProducts = Model.Where(p => p.Tag == "Featured").OrderByDescending(p => p.DateAdded).ToList();
-	var newProducts = Model.Where(p => p.Tag == "New").ToList();
-	var popularProducts = Model.Where(p => p.Tag == "Popular").ToList();
+    ViewData["CollectionTitle"] = "Featured Products";
+    var featuredProducts = Model.Where(p => p.Tag == "Featured").OrderByDescending(p => p.DateAdded).ToList();
+    var newProducts = Model.Where(p => p.Tag == "New").ToList();
+    var popularProducts = Model.Where(p => p.Tag == "Popular").ToList();
 }
 
 <partial name="~/Views/Shared/Partials/_Showcase.cshtml" />
-<partial name="~/Views/Shared/Partials/_FeaturedCollection.cshtml" model="featuredProducts" />
+
+@if (featuredProducts.Count >= 8)
+{
+    <partial name="~/Views/Shared/Partials/_FeaturedCollection.cshtml" model="featuredProducts" />
+}
+
 <partial name="~/Views/Shared/Partials/_SpecialOffers.cshtml" />
-<partial name="~/Views/Shared/Partials/_NewCollection.cshtml" model="newProducts" />
-<partial name="~/Views/Shared/Partials/_PopularCollection.cshtml" model="popularProducts" />
+
+@if (newProducts.Count >= 6)
+{
+    <partial name="~/Views/Shared/Partials/_NewCollection.cshtml" model="newProducts" />
+}
+
+@if (popularProducts.Count >= 6)
+{
+    <partial name="~/Views/Shared/Partials/_PopularCollection.cshtml" model="popularProducts" />
+}

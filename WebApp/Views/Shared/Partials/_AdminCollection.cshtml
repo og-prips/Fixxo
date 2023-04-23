@@ -1,0 +1,13 @@
+﻿@model List<ProductModel>
+
+<section class="collection-grid">
+    <div class="container">
+        <h1 class="text-center">@ViewData["CollectionTitle"]</h1>
+        <div class="item-collection">
+            @foreach (var item in Model)
+            {
+                <partial name="~/Views/Shared/Partials/Components/_AdminCollectionItem.cshtml" model="item" />
+            }
+        </div>
+    </div>
+</section>

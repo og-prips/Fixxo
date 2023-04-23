@@ -14,6 +14,4 @@ public class ContactViewModel
 
 	[Required(ErrorMessage = "Please enter a comment")]
 	public string Comment { get; set; } = null!;
-
-	public bool IsSent { get; set; } = false;
 }

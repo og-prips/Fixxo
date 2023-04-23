@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.DataTransferObjects;
+using WebApi.Filters;
 using WebApi.Repositories;
 
 namespace WebApi.Controllers
@@ -16,7 +17,8 @@ namespace WebApi.Controllers
 			_commentRepo = commentRepo;
 		}
 
-		[HttpPost]
+        [UseApiKey]
+        [HttpPost]
 		public async Task<IActionResult> Create(CommentHttpRequest request)
 		{
 			if (ModelState.IsValid)

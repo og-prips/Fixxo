@@ -1,0 +1,43 @@
+﻿@model RegisterViewModel
+
+<section class="auth-form">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <form class="col-6" method="post" novalidate>
+                <div class="mb-3">
+                    <label asp-for="FirstName" class="form-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <small><span asp-validation-for="FirstName" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <small><span asp-validation-for="LastName" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <small><span asp-validation-for="Email" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <small><span asp-validation-for="Password" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <small><span asp-validation-for="ConfirmPassword" class="text-danger"></span></small>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn-theme">Register</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            <h1>Already have an account?</h1>
+            <a class="btn-white" asp-controller="Auth" asp-action="Login">Login</a>
+        </div>
+    </div>
+</section>

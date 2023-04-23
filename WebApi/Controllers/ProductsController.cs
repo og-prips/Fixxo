@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.DataTransferObjects;
+using WebApi.Filters;
 using WebApi.Repositories;
 
 namespace WebApi.Controllers;
@@ -17,12 +18,14 @@ public class ProductsController : ControllerBase
 
     #region GET
 
+    [UseApiKey]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _repository.GetAllAsync());
     }
 
+    [UseApiKey]
     [HttpGet("{productId}")]
     public async Task<IActionResult> Get(int productId)
     {
@@ -35,6 +38,7 @@ public class ProductsController : ControllerBase
         return NotFound();
     }
 
+    [UseApiKey]
     [HttpGet("tag/{tagName}")]
     public async Task<IActionResult> GetByTag(string tagName)
     {
@@ -45,6 +49,7 @@ public class ProductsController : ControllerBase
 
     #region POST
 
+    [UseApiKey]
     [HttpPost]
     public async Task<IActionResult> Create(ProductHttpRequest request)
     {
@@ -65,19 +70,20 @@ public class ProductsController : ControllerBase
 
     #region DELETE
 
-    //[HttpDelete("{articleNumber}")]
-    //public async Task<IActionResult> Delete(string articleNumber)
-    //{
-    //    var product = await _repository.GetAsync(articleNumber);
+    [HttpPost("delete/{productId}")]
+    public async Task<IActionResult> Delete(int productId)
+    {
+		var result = await _repository.DeleteAsync(productId);
 
-    //    if (product != null)
-    //    {
-    //        await _repository.DeleteAsync(articleNumber);
-    //        return 
-    //    }
-
-    //    return NotFound(product);
-    //}
+		if (result == true)
+		{
+			return Ok();
+		}
+		else
+		{
+			return BadRequest();
+		}
+	}
 
     #endregion
 }

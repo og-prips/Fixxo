@@ -1,0 +1,17 @@
+﻿@model ProductModel
+
+<div class="item">
+	<div class="image-section">
+		<img src="/@Model.ImageUrl" alt="@Model.ProductName" />
+		<div class="menu">
+			<a class="btn-theme" asp-controller="Account" asp-action="AdminProductsManager" asp-route-productId="@Model.ProductId">DELETE PRODUCT</a>
+		</div>
+	</div>
+	<div class="body-section">
+		<div class="category">@Model.Category.CategoryName</div>
+		<div class="name">@Model.ProductName</div>
+		<div>@Model.Tag</div>
+		<partial name="~/Views/Shared/Partials/Components/_StarRating.cshtml" model="Model.Rating" />
+		<div class="price">$@Model.Price.ToString("0.00")</div>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+﻿@model ProductViewModel
+
+<section class="auth-form">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            
+            <form class="col-6" method="post" novalidate>
+                <div class="d-grid mb-5">
+                    <h1>Products manager</h1>
+                    <a class="btn-white" asp-controller="Account" asp-action="AdminProductsManager">Show</a>
+                </div>
+                <hr />
+                <h1>Add a product</h1>
+
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="form-label"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <small><span asp-validation-for="ProductName" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <small><span asp-validation-for="Description" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label"></label>
+                    <input asp-for="ImageUrl" value="images/" class="form-control" />
+                    <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tag" class="form-label"></label>
+                    <select asp-for="Tag" class="form-control">
+                        <option value="Featured">Featured</option>
+                        <option value="New">New</option>
+                        <option value="Popular">Popular</option>
+                    </select>
+                    <small><span asp-validation-for="Tag" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Rating" class="form-label"></label>
+                    <select asp-for="Rating" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <small><span asp-validation-for="Rating" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <small><span asp-validation-for="Price" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label"></label>
+                    <select asp-for="CategoryId" class="form-control">
+                        <option value="1">Accessories</option>
+                        <option value="3">Shoes</option>
+                        <option value="4">Shirts</option>
+                        <option value="5">Coats</option>
+                        <option value="6">Underwear</option>
+                    </select>
+                    <small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn-theme">Add product</button>
+                </div>
+                @if (ViewBag.IsSent != null && ViewBag.IsSent)
+                {
+                    <div class="alert alert-success text-center">
+                        <p>Product has been created successfully.</p>
+                    </div>
+                }
+                
+            </form>
+        </div>
+
+    </div>
+</section>

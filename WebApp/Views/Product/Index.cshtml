@@ -1,5 +1,9 @@
 ﻿@model ProductModel
 
+@{
+    ViewData["CollectionTitle"] = "Related products";
+}
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -11,25 +15,15 @@
             <p class="lead">$@Model.Price.ToString("0.00")</p>
             <p>@Model.Description</p>
             <div class="form-group row">
-                <label for="size" class="col-sm-2 col-form-label">Size:</label>
-                <div class="col-sm-10">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="size" id="size-s" autocomplete="off"> S
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="size" id="size-m" autocomplete="off"> M
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="size" id="size-l" autocomplete="off"> L
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="size" id="size-xl" autocomplete="off"> X
-                        </label>
-                    </div>
+                <label for="size-select" class="col-sm-2 col-form-label">Size: </label>
+                <div class="col-sm-10 ">
+                    <button class="btn btn-outline-secondary mr-2">S</button>
+                    <button class="btn btn-outline-secondary mr-2">M</button>
+                    <button class="btn btn-outline-secondary mr-2">L</button>
+                    <button class="btn btn-outline-secondary mr-2">XL</button>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mt-3">
                 <label for="color" class="col-sm-2 col-form-label">Color:</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="color">
@@ -41,21 +35,76 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mt-3">
                 <label for="quantity" class="col-sm-2 col-form-label">Qty:</label>
                 <div class="col-sm-10">
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-secondary" type="button" id="button-minus">-</button>
-                        </div>
+                        <button class="btn btn-light" type="button" id="button-minus">-</button>
                         <input type="text" class="form-control" id="quantity" value="1">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button" id="button-plus">+</button>
-                        </div>
+                        <button class="btn btn-light me-5" type="button" id="button-plus">+</button>
+                        <button class="btn-theme ms-5">ADD TO CART</button>
+
                     </div>
                 </div>
             </div>
-            <button class="btn btn-warning btn-lg">ADD TO CART</button>
+            <div class="form-group row mt-3">
+                <div class="container mb-4">
+                    <label for="quantity" class="col-sm-2 col-form-label">Share:</label>
+                    <i class="fa-brands fa-facebook-f me-3 fa-lg"></i>
+                    <i class="fa-brands fa-instagram me-3 fa-lg"></i>
+                    <i class="fa-brands fa-twitter me-3 fa-lg"></i>
+                    <i class="fa-brands fa-google me-3 fa-lg"></i>
+                    <i class="fa-brands fa-linkedin me-3 fa-lg"></i>
+                </div>
+            </div>
         </div>
     </div>
+    <div>
+        <h3>Reviews</h3>
+        <div class="review-list">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Diane</h5>
+                    <p class="card-text"><small class="text-muted">26th Jan 2021</small></p>
+                    <div class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="card-text">Love these, I have them in several colours, really comfortable, you need to go at least one size smaller.</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Anonymous</h5>
+                    <p class="card-text"><small class="text-muted">25th Jan 2021</small></p>
+                    <div class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="card-text">Does not look like the picture</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Anonymous</h5>
+                    <p class="card-text"><small class="text-muted">23rd Jan 2021</small></p>
+                    <div class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="card-text">I purchased the wrong size, otherwise not too bad</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="~/Views/Shared/Partials/_RelatedCollection.cshtml" />
 </div>

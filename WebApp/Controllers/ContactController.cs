@@ -5,6 +5,13 @@ namespace _01_AspNetMVC.Controllers;
 
 public class ContactController : Controller
 {
+    private readonly IConfiguration _config;
+
+    public ContactController(IConfiguration config)
+    {
+        _config = config;
+    }
+
     public IActionResult Index()
     {
         var viewModel = new ContactViewModel();
@@ -22,8 +29,11 @@ public class ContactController : Controller
     {
         if (ModelState.IsValid)
         {
+            string apiUrl = _config.GetSection("Api").GetValue<string>("Url")!;
+            string apiKey = _config.GetSection("Api").GetValue<string>("Key")!;
+
             using var http = new HttpClient();
-            var result = await http.PostAsJsonAsync("https://localhost:7049/api/comment", viewModel);
+            var result = await http.PostAsJsonAsync($"{apiUrl}/comment?key={apiKey}", viewModel);
 
             if (result.IsSuccessStatusCode)
             {

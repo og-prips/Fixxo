@@ -1,0 +1,65 @@
+﻿@{
+    var relatedProducts = new List<ProductModel>
+    {
+        new ProductModel()
+        {
+            Category = new CategoryModel()
+            {
+                CategoryName = "Shirts"
+            },
+            ImageUrl = "/images/white-shirt.png",
+            ProductName = "White shirt",
+            ProductId = 1,
+            Rating = 4,
+            Price = 19
+        },
+        new ProductModel()
+        {
+            Category = new CategoryModel()
+            {
+                CategoryName = "Shoes"
+            },
+            ImageUrl = "/images/air-force-1.png",
+            ProductName = "Air Force 1",
+            ProductId = 5,
+            Rating = 4,
+            Price = 135
+        },
+        new ProductModel()
+        {
+            Category = new CategoryModel()
+            {
+                CategoryName = "Underwear"
+            },
+            ImageUrl = "/images/cotton-boxers.png",
+            ProductName = "Cotton Boxers",
+            ProductId = 12,
+            Rating = 3,
+            Price = 20
+        },
+        new ProductModel()
+        {
+            Category = new CategoryModel()
+            {
+                CategoryName = "Accessories"
+            },
+            ImageUrl = "/images/ray-ban-aviator-classic-sunglasses.png",
+            ProductName = "Ray-Ban Aviator Glasses",
+            ProductId = 11,
+            Rating = 5,
+            Price = 150
+        },
+    };
+}
+
+<section class="collection-grid">
+    <div class="container">
+        <div class="title">@ViewData["CollectionTitle"]</div>
+        <div class="item-collection">
+            @foreach (var item in relatedProducts)
+            {
+                <partial name="~/Views/Shared/Partials/Components/_CollectionItem.cshtml" model="item" />
+            }
+        </div>
+    </div>
+</section>

@@ -235,6 +235,15 @@ button {
             grid-area: comments;
         }
 
+.auth-form {
+    margin-top: 70px;
+}
+    .auth-form h1 {
+        text-align: center;
+        
+        font-weight: 700;
+    }
+
 @media (min-width: 768px) {
     .contact-form form {
         grid-template-columns: 1fr 1fr;
@@ -850,3 +859,11 @@ footer {
         footer .container .fa-brands {
             color: #000000;
         }
+
+.no-dot > ul {
+    list-style-type: none;
+}
+
+.review-list .card {
+    border: none;
+}

@@ -60,13 +60,20 @@ public class ProductRepository
         return entity;
     }
 
-    public async Task<ProductHttpResponse> DeleteAsync(ProductEntity entity)
+    public async Task<bool> DeleteAsync(int productId)
     {
-        var item = await _context.Products.FindAsync(entity);
+        try
+        {
+			var product = await _context.Products.FindAsync(productId);
 
-        _context.Products.Remove(item!);
-        await _context.SaveChangesAsync();
+			_context.Products.Remove(product!);
+			await _context.SaveChangesAsync();
 
-        return item!;
-    }
+			return true;
+        }
+        catch
+        {
+            return false;
+        }
+	}
 }

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ProductModel>
+
+@{
+	ViewData["CollectionTitle"] = "All products";
+	var allProducts = Model.OrderByDescending(p => p.DateAdded).ToList();
+}
+
+<partial name="~/Views/Shared/Partials/_AdminCollection.cshtml" model="allProducts" />

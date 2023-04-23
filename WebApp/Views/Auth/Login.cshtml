@@ -1,0 +1,30 @@
+﻿@model LoginViewModel
+
+<section class="auth-form">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center">
+            <form class="col-6" method="post" novalidate>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <small><span asp-validation-for="Email" class="text-danger"></span></small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <small><span asp-validation-for="Password" class="text-danger"></span></small>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger text-center no-dot"></div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn-theme">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            <h1>I am new here</h1>
+            <a class="btn-white" asp-controller="Auth" asp-action="Register">Register</a>
+        </div>
+    </div>
+</section>
