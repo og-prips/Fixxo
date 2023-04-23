@@ -510,11 +510,15 @@ header .icons {
 
 .collection-grid .item-collection .item .image-section {
     position: relative;
+    
 }
 
     .collection-grid .item-collection .item .image-section img {
-        width: 100%;
-        height: auto;
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        /*width: 100%;
+        height: auto;*/
     }
 
     .collection-grid .item-collection .item .image-section .menu {
@@ -756,10 +760,13 @@ header .icons {
     position: relative;
 }
 
-.collection-twocolumns .item-collection .item .image-section img {
-    width: 100%;
-    height: auto;
-}
+    .collection-twocolumns .item-collection .item .image-section img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        /*width: 100%;
+        height: auto;*/
+    }
 
 .collection-twocolumns .item-collection .item .image-section .menu {
     position: absolute;

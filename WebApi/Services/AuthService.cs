@@ -43,7 +43,11 @@ public class AuthService
         {
             await _userManager.AddToRoleAsync(user, request.Role);
 
-            return true;
+            var isSignedIn = await _signInManager.PasswordSignInAsync(user.Email!, request.Password, false, false);
+            if (isSignedIn.Succeeded)
+            {
+                return true;
+            }
         }
 
         return false;

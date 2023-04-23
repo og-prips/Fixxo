@@ -31,6 +31,27 @@ public class AuthController : Controller
 
             if (result.IsSuccessStatusCode)
             {
+                var loginResult = await http.PostAsJsonAsync($"{_apiUrl}/Auth/Login?key={_apiKey}", new LoginViewModel()
+                {
+                    Email = viewModel.Email,
+                    Password = viewModel.Password,
+                });
+
+                if (loginResult.IsSuccessStatusCode)
+                {
+                    var token = await loginResult.Content.ReadAsStringAsync();
+
+                    HttpContext.Response.Cookies.Append("accessToken", token, new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.Now.AddHours(1)
+                    });
+
+                    return RedirectToAction("Index", "Account");
+                }
+
+                HttpContext.Response.Cookies.Delete("accessToken");
                 return RedirectToAction("Login", "Auth");
             }
         }
