@@ -9,8 +9,13 @@ public static class RoleVerifyer
     {
         using var http = new HttpClient();
         var token = httpContext.Request.Cookies["accessToken"];
+        
+        if (token == null)
+        {
+            return false;
+        }
+        
         http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
         var handler = new JwtSecurityTokenHandler();
         var readableToken = handler.ReadJwtToken(token);
         var claimRoles = readableToken.Claims.Where(x => x.Type == "role").Select(x => x.Value).ToList();
